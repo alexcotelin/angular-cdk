@@ -1,0 +1,10 @@
+<div class="acknowledge-container">
+  <div *ngTemplateOutlet="placeholderTemplateRef"></div>
+  <div *ngIf="visible" class="blocked-view-overlay">
+    <div class="container">
+      <button (click)="onMouseClick()">
+        Data has changed, click to see latest changes
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<h2>{{ data.heading }}</h2>
+<app-context-actions>
+  <button mat-icon-button aria-label="icon-button with a menu">
+    <mat-icon>event_note</mat-icon>
+  </button>
+  <button mat-icon-button aria-label="icon-button with a menu">
+    <mat-icon>screen_share</mat-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Redial</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Check voice mail</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+  </mat-menu>
+</app-context-actions>
+
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{ !isLinear ? 'Enable linear mode' : 'Disable linear mode' }}
+</button> -->
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Knowledge check</ng-template>
+      <h2 [innerHTML]="data.knowledgecheck.introheading"></h2>
+      <p [innerHTML]="data.knowledgecheck.introcontent"></p>
+
+      <label id="example-radio-group-label"
+        ><h2>{{ data.knowledgecheck.question1heading }}</h2></label
+      >
+      <p [innerHTML]="data.knowledgecheck.question1intro">{{ data.knowledgecheck.introcontent }}</p>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        formControlName="firstCtrl"
+      >
+        <mat-radio-button class="example-radio-button" [value]="1">Yes </mat-radio-button>
+        <br />
+        <mat-radio-button class="example-radio-button" [value]="0">No </mat-radio-button>
+      </mat-radio-group>
+      <!-- <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required />
+      </mat-form-field> -->
+      <div>
+        <button mat-stroked-button color="primary" matStepperNext>{{ data.knowledgecheck.introlabel }}</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Your details</ng-template>
+      <h2>Your details</h2>
+      <p>Some text</p>
+      <h3>Personal information</h3>
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input matInput placeholder="First name" formControlName="firstCtrl" required />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Surname</mat-label>
+        <input matInput placeholder="Surname" formControlName="surnameCtrl" required />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-stroked-button color="primary" matStepperNext>Continue</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Investment option</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-stroked-button color="primary" matStepperNext>Continue</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Declaration</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-stroked-button color="primary" matStepperNext>Continue</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Confirmation</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

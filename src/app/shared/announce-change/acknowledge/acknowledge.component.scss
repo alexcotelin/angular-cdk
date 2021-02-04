@@ -1,0 +1,18 @@
+.acknowledge-container {
+  position: relative;
+}
+.blocked-view-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: #2f2e2cd1;
+  text-align: center;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+}

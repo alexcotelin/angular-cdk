@@ -1,0 +1,25 @@
+<h2>Analytics content here</h2>
+<app-context-actions>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>functions</mat-icon>
+      <span>Functions</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>event_note </mat-icon>
+      <span>Notes</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>multiline_chart</mat-icon>
+      <span>Charts</span>
+    </button>
+  </mat-menu>
+</app-context-actions>
+
+<app-bar-chart
+  *appAnnounceChange="barChartDataSetLive$ | async; acknowledged: onAcknowledgedClick"
+  [barChartData]="barChartDataSetLive$ | async"
+></app-bar-chart>
